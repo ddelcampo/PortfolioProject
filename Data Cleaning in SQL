@@ -51,4 +51,10 @@ CASE WHEN soldasvacant = 'Y' THEN 'Yes'
      ELSE soldasvacant
      END
      
+# Delete unused columns 
+
+ALTER TABLE nashvillehousing
+DROP COLUMN taxdistrict, 
+DROP COLUMN propertyaddress,
+DROP COLUMN owneraddress
      
