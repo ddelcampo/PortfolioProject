@@ -39,7 +39,7 @@ ORDER BY 2
 
 SELECT soldasvacant,
 CASE WHEN soldasvacant = 'Y' THEN 'Yes'
-	 WHEN soldasvacant = 'N' THEN 'No'
+     WHEN soldasvacant = 'N' THEN 'No'
      ELSE soldasvacant
      END
 FROM portfolioproject.nashvillehousing
@@ -47,7 +47,7 @@ FROM portfolioproject.nashvillehousing
 UPDATE nashvillehousing
 SET soldasvacant = 
 CASE WHEN soldasvacant = 'Y' THEN 'Yes'
-	 WHEN soldasvacant = 'N' THEN 'No'
+     WHEN soldasvacant = 'N' THEN 'No'
      ELSE soldasvacant
      END
      
