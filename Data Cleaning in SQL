@@ -28,3 +28,27 @@ SET OwnerSplitState = SUBSTRING_INDEX(SUBSTRING_INDEX(owneraddress,',',-2),',',-
 
 SELECT*
 FROM portfolioproject.nashvillehousing
+
+
+# Change 'Y' to 'Yes' and 'N' to 'No' so data is consistent 
+
+SELECT DISTINCT(soldasvacant), COUNT(soldasvacant)
+FROM portfolioproject.nashvillehousing
+GROUP BY soldasvacant
+ORDER BY 2
+
+SELECT soldasvacant,
+CASE WHEN soldasvacant = 'Y' THEN 'Yes'
+	 WHEN soldasvacant = 'N' THEN 'No'
+     ELSE soldasvacant
+     END
+FROM portfolioproject.nashvillehousing
+
+UPDATE nashvillehousing
+SET soldasvacant = 
+CASE WHEN soldasvacant = 'Y' THEN 'Yes'
+	 WHEN soldasvacant = 'N' THEN 'No'
+     ELSE soldasvacant
+     END
+     
+     
