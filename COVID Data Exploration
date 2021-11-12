@@ -57,7 +57,7 @@ ORDER BY TotalDeathCount DESC
 
 
 
-#GLOBAL NUMBERS
+#Showing Global Death Percentage
 
 SELECT SUM(new_cases) as total_cases, SUM(new_deaths) as total_deaths, SUM(new_deaths)/SUM(New_Cases)*100 as DeathPercentage
 FROMPortfolioProject.CovidDeaths
