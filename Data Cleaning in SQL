@@ -1,1 +1,30 @@
+#Split Owner address into 3 separate columns: Street, City, & State
 
+SELECT owneraddress,
+SUBSTRING_INDEX(owneraddress, ',', 1) AS street,
+SUBSTRING_INDEX(substring_index(owneraddress, ',', -2), ',', 1) AS city,
+SUBSTRING_INDEX(SUBSTRING_INDEX(owneraddress,',',-2),',',-1) AS state
+FROM portfolioproject.nashvillehousing
+
+ALTER TABLE nashvillehousing
+ADD OwnerSplitAddress NVARCHAR(255);
+
+UPDATE nashvillehousing
+SET OwnerSplitAddress = SUBSTRING_INDEX(owneraddress, ',', 1)
+
+ALTER TABLE nashvillehousing
+ADD OwnerSplitCity NVARCHAR(255);
+
+UPDATE nashvillehousing
+SET OwnerSplitCity = SUBSTRING_INDEX(substring_index(owneraddress, ',', -2), ',', 1)
+
+ALTER TABLE nashvillehousing
+ADD OwnerSplitState NVARCHAR(255);
+
+UPDATE nashvillehousing
+SET OwnerSplitState = SUBSTRING_INDEX(SUBSTRING_INDEX(owneraddress,',',-2),',',-1)
+
+#Check new columns with extracted information 
+
+SELECT*
+FROM portfolioproject.nashvillehousing
